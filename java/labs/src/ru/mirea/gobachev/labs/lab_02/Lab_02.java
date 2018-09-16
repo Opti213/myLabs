@@ -8,7 +8,7 @@ import ru.mirea.gobachev.labs.lab_02.human.HumanTest;
 import java.lang.String;
 
 public class Lab_02 {
-    public static void main(String[] args) {
+    public static void main(String args[]) {
         CircleTest.test();
         HumanTest.test();
         BookTest.test();
