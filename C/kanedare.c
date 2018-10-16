@@ -21,11 +21,11 @@ int main()
     printf("Wwedite year: ");
     scanf("%d", &year);
    if (what_day(day, month, year) == 0) printf("woskresenye");
-   if (what_day(day, month, year) == 1) printf("ponedelnik");
-   if (what_day(day, month, year) == 2) printf("vtornik");
-   if (what_day(day, month, year) == 3) printf("sreda");
-   if (what_day(day, month, year) == 4) printf("chetverg");
-   if (what_day(day, month, year) == 5) printf("pyatnica");
-   if (what_day(day, month, year) == 6) printf("subbota");
+   else if (what_day(day, month, year) == 1) printf("ponedelnik");
+   else if (what_day(day, month, year) == 2) printf("vtornik");
+   else if (what_day(day, month, year) == 3) printf("sreda");
+   else if (what_day(day, month, year) == 4) printf("chetverg");
+   else if (what_day(day, month, year) == 5) printf("pyatnica");
+   else if (what_day(day, month, year) == 6) printf("subbota");
     return 0;
 }
