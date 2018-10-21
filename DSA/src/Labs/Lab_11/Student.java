@@ -1,8 +1,7 @@
 package Labs.Lab_11;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Student implements Comparable{
@@ -45,6 +44,93 @@ public class Student implements Comparable{
             }
         }catch (IOException e){
 
+        }
+    }
+
+    static void parseAndInput(ArrayList<Student> students){
+        try (BufferedReader fileReader = new BufferedReader(new FileReader("students.txt"))) {
+            int countOfStudent = Integer.parseInt(fileReader.readLine());
+            for (int i = 0; i < countOfStudent; i++) {
+                int tmpCipher = Integer.parseInt(fileReader.readLine());
+                String tmpName = fileReader.readLine();
+                String tmpGroup = fileReader.readLine();
+                int tmpMark = Integer.parseInt(fileReader.readLine());
+                students.add(new Student(tmpCipher, tmpName, tmpGroup, tmpMark));
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    static ArrayList<Student> search(ArrayList<Student> students){
+        ArrayList<Student> rez = new ArrayList<>();
+        try(BufferedReader bf = new BufferedReader(new InputStreamReader(System.in))) {
+            System.out.println("enter field and value(Cipher Name Group Mark) ex: name [enter] Alice");
+            String value;
+            switch (bf.readLine().toLowerCase()) {
+                case "cipher":
+                    value = bf.readLine();
+                    for (Student student : students) {
+                        if (student.cipher == Integer.parseInt(value)) rez.add(student);
+                    }
+                    break;
+                case "name":
+                    value = bf.readLine();
+                    for (Student student : students) {
+                        if (student.name.equals(value)) rez.add(student);
+                    }
+                    break;
+                case "group":
+                    value = bf.readLine();
+                    for (Student student : students) {
+                        if (student.group.equals(value)) rez.add(student);
+                    }
+                    break;
+                case "mark":
+                    value = bf.readLine();
+                    for (Student student : students) {
+                        if (student.mark == Integer.parseInt(value)) rez.add(student);
+                    }
+                    break;
+                default:
+                    System.out.println("wrong enter");
+
+            }
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+        return rez;
+    }
+
+    static void binaryWrite(ArrayList<Student> students){
+        try (DataOutputStream binaryWriter = new DataOutputStream(new FileOutputStream("Data.bin"))){
+            for (Student student : students) {
+                binaryWriter.writeInt(student.cipher);
+                binaryWriter.writeUTF(student.name);
+                binaryWriter.writeUTF(student.group);
+                binaryWriter.writeInt(student.mark);
+            }
+        } catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    static void binaryReadAndPrint(int countOfStudents){
+        try(DataInputStream binaryReader  = new DataInputStream(new FileInputStream("Data.bin"))){
+            System.out.println("\nbinary reading\n");
+            for (int i = 0; i < countOfStudents; i++) {
+                Student tmp = new Student(
+                        binaryReader.readInt(),
+                        binaryReader.readUTF(),
+                        binaryReader.readUTF(),
+                        binaryReader.readInt()
+                );
+                System.out.println(tmp);
+            }
+
+
+        } catch (IOException e){
+            System.out.println(e.getMessage());
         }
     }
 }
