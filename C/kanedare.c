@@ -14,18 +14,18 @@ int main()
     int day;
     int month;
     int year;
-    printf("Wwedite day: ");
+    printf("Enter day: ");
     scanf("%d", &day);
-    printf("Wwedite moth: ");
+    printf("Enter moth: ");
     scanf("%d", &month);
-    printf("Wwedite year: ");
+    printf("Enter year: ");
     scanf("%d", &year);
-   if (what_day(day, month, year) == 0) printf("woskresenye");
-   else if (what_day(day, month, year) == 1) printf("ponedelnik");
-   else if (what_day(day, month, year) == 2) printf("vtornik");
-   else if (what_day(day, month, year) == 3) printf("sreda");
-   else if (what_day(day, month, year) == 4) printf("chetverg");
-   else if (what_day(day, month, year) == 5) printf("pyatnica");
-   else if (what_day(day, month, year) == 6) printf("subbota");
+   if (what_day(day, month, year) == 0) printf("Sunday");
+   else if (what_day(day, month, year) == 1) printf("Monday");
+   else if (what_day(day, month, year) == 2) printf("Tuesday");
+   else if (what_day(day, month, year) == 3) printf("Wednesday");
+   else if (what_day(day, month, year) == 4) printf("Thursday");
+   else if (what_day(day, month, year) == 5) printf("Friday");
+   else if (what_day(day, month, year) == 6) printf("Saturday");
     return 0;
 }
